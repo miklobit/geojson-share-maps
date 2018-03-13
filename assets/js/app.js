@@ -100,12 +100,12 @@ featureLayer.once("ready", function(e) {
 });
 
 var map = L.map("map", {
-  zoom: 10,
-  layers: [mapboxOSM]
+  zoom: 10, maxZoom: 10, /* ,
+  layers: [mapboxOSM] */
 }).fitWorld();
 map.attributionControl.setPrefix("");
 
-var layerControl = L.control.layers(baseLayers, null, {
+var layerControl = L.control.layers(null /* baseLayers */ , null, {
   collapsed: document.body.clientWidth <= 767 ? true : false
 }).addTo(map);
 
@@ -226,10 +226,10 @@ if (urlParams.attribution) {
 
 if (cluster === true) {
   map.addLayer(markerClusters);
-  layerControl.addOverlay(markerClusters, "<span name='title'>GeoJSON Data</span>");
+  layerControl.addOverlay(markerClusters, "<span name='title'>Cluster 1</span>");
 } else {
   map.addLayer(featureLayer);
-  layerControl.addOverlay(featureLayer, "<span name='title'>GeoJSON Data</span>");
+  layerControl.addOverlay(featureLayer, "<span name='title'>Dane 1</span>");
 }
 
 $("#refresh-btn").click(function() {
